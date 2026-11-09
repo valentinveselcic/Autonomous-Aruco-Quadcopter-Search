@@ -79,13 +79,13 @@ ros2 launch quadcopter_bringup quadcopter_basic.launch.xml
 ### 2. Start the ArUco Pose Detector Node
 Starts the OpenCV detection pipeline, `/tf` broadcaster, and live `Aruco View` camera feed:
 ```bash
-ros2 run amr_lv5 aruco_pose_detector
+ros2 run drone_aruco_task aruco_pose_detector
 ```
 
 ### 3. Start the Autonomous Drone Controller
 Initiates takeoff, marker search/approach for both markers, and return-to-home landing:
 ```bash
-ros2 run amr_lv5 sim_drone_controller
+ros2 run drone_aruco_task sim_drone_controller
 ```
 
 ---
