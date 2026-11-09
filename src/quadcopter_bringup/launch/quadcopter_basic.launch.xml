@@ -1,0 +1,25 @@
+<launch>
+    <let name="gazebo_config_path" 
+        value="$(find-pkg-share quadcopter_bringup)/config/gz_bridge.yaml" />
+    <let name="gazebo_world_path" 
+        value="$(find-pkg-share quadcopter_bringup)/worlds/depot_with_aruco.sdf" />
+    <let name="urdf_path"
+        value="$(find-pkg-share quadcopter_description)/urdf/quadcopter.urdf" />
+    
+    <node pkg="robot_state_publisher" exec="robot_state_publisher">
+        <param name="robot_description" value="$(command 'cat $(var urdf_path)')" />
+    </node>
+
+    <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
+        <arg name="gz_args" value="$(var gazebo_world_path) -r" />
+    </include>
+
+    <node pkg="ros_gz_sim" exec="create" args="-topic robot_description -x -8.00 -y 0.00 -z 0.2 -R 0.00 -P 0.00 -Y 0.00">
+        <param name="use_sim_time" value="True" />
+    </node>
+
+    <node pkg="ros_gz_bridge" exec="parameter_bridge">
+        <param name="config_file" value="$(var gazebo_config_path)" />
+    </node> 
+
+</launch>

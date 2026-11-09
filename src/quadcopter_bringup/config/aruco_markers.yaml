@@ -1,0 +1,18 @@
+markers:
+  - id: 23
+    x: -7.54
+    y: 3.33
+    z: 2.05
+    roll: 1.57
+    pitch: -1.57
+    yaw: 0
+    size: 0.3
+
+  - id: 42
+    x: -7.54
+    y: -3.69
+    z: 2.05
+    roll: -1.57
+    pitch: 1.57
+    yaw: 3.14
+    size: 0.3

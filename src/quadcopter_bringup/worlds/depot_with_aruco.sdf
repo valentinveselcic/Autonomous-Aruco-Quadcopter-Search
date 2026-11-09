@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="depot">
+    <scene>
+      <grid>false</grid>
+    </scene>
+    <physics name="1ms" type="ode">
+      <max_step_size>0.003</max_step_size>
+      <real_time_update_rate>1000.0</real_time_update_rate>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <plugin
+      filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+    <plugin
+      filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+    <plugin
+      filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin
+      filename="gz-sim-imu-system"
+      name="gz::sim::systems::Imu">
+    </plugin>
+
+    <include>
+      <uri>
+        https://fuel.gazebosim.org/1.0/OpenRobotics/models/Depot
+      </uri>
+
+      <!-- Remove annoying things that get in the way of visualizing the robot -->
+      <experimental:params>
+        <visual element_id="Fan1::visual" action="remove"/>
+        <visual element_id="Fan2::visual" action="remove"/>
+        <visual element_id="main::ROOF_visual" action="remove"/>
+        <visual element_id="main::FANS_visual" action="remove"/>
+      </experimental:params>
+
+    </include>
+
+    <model name="aruco_marker_23">
+      <static>true</static>
+      <link name="link">
+        <pose>-7.54 3.33 2.05 1.57 -1.57 0</pose>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001 </size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.3 0.3 0.001 </size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0 0 0 1</specular>
+            <emissive>0 0 0 1</emissive>
+            <pbr>
+              <metal>
+                <albedo_map>materials/textures/aruco_23.png</albedo_map>
+                <roughness>0.4</roughness>
+                <metalness>0.0</metalness>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+  </model>
+
+  <model name="aruco_marker_42">
+    <static>true</static>
+    <link name="link">
+      <pose>-7.54 -3.69 2.05 -1.57 1.57 3.14</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.3 0.3 0.001 </size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.3 0.3 0.001 </size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0 0 0 1</specular>
+          <emissive>0 0 0 1</emissive>
+          <pbr>
+            <metal>
+              <albedo_map>materials/textures/aruco_42.png</albedo_map>
+              <roughness>0.4</roughness>
+              <metalness>0.0</metalness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  </world>
+</sdf>
